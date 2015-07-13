@@ -2,51 +2,274 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>471</width>
-    <height>366</height>
+    <width>422</width>
+    <height>332</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>گیم نت پردیس</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::RightToLeft</enum>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>260</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>270</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="onePerson_radioBtn">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="text">
+         <string notr="true">یک نفره</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="shortcut">
+         <string>1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string>مبلغ:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="price_lable">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>تومان</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="twoPerson_radioBtn">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="text">
+         <string>دو نفره</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="shortcut">
+         <string>2</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>زمان:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="time_lable">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>00:00:00</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="startBtn">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>شروع</string>
+        </property>
+        <property name="shortcut">
+         <string>Return</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="endBtn">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>پایان</string>
+        </property>
+        <property name="shortcut">
+         <string>Esc</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>471</width>
+     <width>422</width>
      <height>21</height>
     </rect>
    </property>
