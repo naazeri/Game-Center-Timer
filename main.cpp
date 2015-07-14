@@ -7,11 +7,11 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-	QQmlApplicationEngine engine;
-	QQmlContext *root = engine.rootContext();
-	DataBase *dataBase = new DataBase;
+    QQmlApplicationEngine engine;
+    QQmlContext *root = engine.rootContext();
+    DataBase *dataBase = new DataBase;
 
-	root->setContextProperty("DataBase", dataBase);
+    root->setContextProperty("DataBase", dataBase);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();

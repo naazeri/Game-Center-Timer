@@ -7,33 +7,33 @@
 
 class DataBase : public QObject
 {
-	Q_OBJECT
-	Q_PROPERTY(int payment READ payment WRITE setPayment NOTIFY paymentChanged)
+    Q_OBJECT
+    Q_PROPERTY(int payment READ payment WRITE setPayment NOTIFY paymentChanged)
 
 public:
-	explicit DataBase(QObject *parent = 0);
-	~DataBase();
-	void initData();
-	int payment();
+    explicit DataBase(QObject *parent = 0);
+    ~DataBase();
+    void initData();
 	void setPayment(int payment);
+    int payment();
 
 private:
-	bool isSp;
-	int thePayment;
-	qint64 spentTime;
-	float spPerSec, mpPerSec;
-	QTime *time;
-	QTimer *timer;
+    bool isSp;
+    int thePayment;
+    qint64 spentTime;
+    float spPerSec, mpPerSec;
+    QTime *time;
+    QTimer *timer;
 
 signals:
-	void paymentChanged();
+    void paymentChanged();
 
 public slots:
-	void start();
-	void pause();
-	void stop();
-	void spActivated();
-	void mpActivated();
+    void start();
+    void pause();
+    void stop();
+    void spActivated();
+    void mpActivated();
 
 };
 

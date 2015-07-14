@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>MainForm.ui.qml</file>
+        <file>BTraffic.ttf</file>
+        <file>BYekan.ttf</file>
+        <file>bg.jpg</file>
     </qresource>
 </RCC>
