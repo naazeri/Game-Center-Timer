@@ -22,7 +22,7 @@ void DataBase::initData()
     spPerSec = 0.6;
     mpPerSec = 0.8;
 
-//    connect(timer, SIGNAL(timeout()), this, SLOT());
+    connect(timer, SIGNAL(timeout()), this, SLOT());
 }
 
 int DataBase::payment()

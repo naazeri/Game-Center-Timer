@@ -14,8 +14,8 @@ public:
     explicit DataBase(QObject *parent = 0);
     ~DataBase();
     void initData();
-	void setPayment(int payment);
     int payment();
+    void setPayment(int payment);
 
 private:
     bool isSp;

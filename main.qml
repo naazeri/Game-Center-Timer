@@ -30,6 +30,15 @@ ApplicationWindow
             anchors.fill:parent
             source:"qrc:/bg.jpg"
 
+            MouseArea
+            {
+                anchors.fill:parent
+                onClicked:
+                {
+                    spentTime=spentTime+1
+                }
+            }
+
             Text
             {
                 id:text_payment
