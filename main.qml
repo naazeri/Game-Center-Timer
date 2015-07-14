@@ -30,15 +30,6 @@ ApplicationWindow
             anchors.fill:parent
             source:"qrc:/bg.jpg"
 
-            MouseArea
-            {
-                anchors.fill:parent
-                onClicked:
-                {
-                    spentTime=spentTime+1
-                }
-            }
-
             Text
             {
                 id:text_payment
@@ -167,9 +158,40 @@ ApplicationWindow
                id:spRb_image
                anchors.right:spRb.left
                anchors.verticalCenter: spRb.verticalCenter
-               width:item_countdown.width/6
+               width:item_countdown.width/8
                height:width/sourceSize.width*sourceSize.height
                source:"qrc:/sp.png"
+
+               MouseArea
+               {
+                   id:spRb_image_mouse
+                   anchors.fill:parent
+                   onClicked:
+                   {
+                       myGroup.current=spRb
+                   }
+               }
+            }
+
+            Text
+            {
+                id:spRb_text
+                anchors.right:spRb_image.left
+                anchors.verticalCenter: spRb.verticalCenter
+                text:"تک نفره"
+                font.family: font_yekan.name
+                font.pixelSize: spRb_image.height/2
+                color:"white"
+
+                MouseArea
+                {
+                    id:spRb_text_mouse
+                    anchors.fill:parent
+                    onClicked:
+                    {
+                        myGroup.current=spRb
+                    }
+                }
             }
 
             RadioButton
@@ -182,6 +204,47 @@ ApplicationWindow
                 exclusiveGroup: myGroup
                 width:item_countdown.width/25
                 height:width
+            }
+
+            Image
+            {
+                id:mpRb_image
+                anchors.right:mpRb.left
+                anchors.verticalCenter: mpRb.verticalCenter
+                width:item_countdown.width/4
+                height:width/sourceSize.width*sourceSize.height
+                source:"qrc:/mp.png"
+
+               MouseArea
+               {
+                   id:mpRb_image_mouse
+                   anchors.fill:parent
+                   onClicked:
+                   {
+                       myGroup.current=mpRb
+                   }
+               }
+            }
+
+            Text
+            {
+                id:mpRb_text
+                anchors.right:mpRb_image.left
+                anchors.verticalCenter: mpRb.verticalCenter
+                text:"دو نفره"
+                font.family: font_yekan.name
+                font.pixelSize: mpRb_image.height/2
+                color:"white"
+
+                MouseArea
+                {
+                    id:mpRb_text_mouse
+                    anchors.fill:parent
+                    onClicked:
+                    {
+                        myGroup.current=mpRb
+                    }
+                }
             }
         }
     }
