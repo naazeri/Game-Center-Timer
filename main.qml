@@ -162,6 +162,16 @@ ApplicationWindow
                 height:width
             }
 
+            Image
+            {
+               id:spRb_image
+               anchors.right:spRb.left
+               anchors.verticalCenter: spRb.verticalCenter
+               width:item_countdown.width/6
+               height:width/sourceSize.width*sourceSize.height
+               source:"qrc:/sp.png"
+            }
+
             RadioButton
             {
                 id:mpRb
