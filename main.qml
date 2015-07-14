@@ -4,8 +4,10 @@ import QtQuick.Window 2.2
 
 ApplicationWindow {
     title: qsTr("Hello World")
-	width: height * 1.618
-	height: Screen.desktopAvailableHeight / 1.6
+    width: 640
+    height: 480
     visible: true
 	id: root
+
+
 }
