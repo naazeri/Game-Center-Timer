@@ -9,24 +9,28 @@ class DataBase : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int payment READ payment WRITE setPayment NOTIFY paymentChanged)
+	Q_PROPERTY(QString duration READ duration WRITE setDuration NOTIFY durationChanged)
 
 public:
     explicit DataBase(QObject *parent = 0);
     ~DataBase();
-    void initData();
+	void initData();
+	int payment();
+	QString duration();
 	void setPayment(int payment);
-    int payment();
+	void setDuration(QString duration);
 
 private:
-    bool isSp;
+	bool isSp, isStart, isStop, isPause;
     int thePayment;
     qint64 spentTime;
     float spPerSec, mpPerSec;
     QTime *time;
-    QTimer *timer;
+	QTimer *timer;
 
 signals:
     void paymentChanged();
+	void durationChanged();
 
 public slots:
     void start();
@@ -34,6 +38,7 @@ public slots:
     void stop();
     void spActivated();
     void mpActivated();
+	void calculate();
 
 };
 

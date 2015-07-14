@@ -22,40 +22,57 @@ void DataBase::initData()
     spPerSec = 0.6;
     mpPerSec = 0.8;
 
-//    connect(timer, SIGNAL(timeout()), this, SLOT());
+	connect(timer, SIGNAL(timeout()), this, SLOT(calculate()));
 }
 
 int DataBase::payment()
 {
-    return thePayment;
+	return thePayment;
+}
+
+void DataBase::calculate()
+{
+
 }
 
 void DataBase::setPayment(int payment)
 {
-    thePayment = payment;
+	thePayment = payment;
+	emit paymentChanged();
+}
+
+QString DataBase::duration()
+{
+	return time->toString("hh:mm:ss");
+}
+
+void DataBase::setDuration(QString duration)
+{
+	time->setHMS(0,0,0,0);
+	emit durationChanged();
 }
 
 void DataBase::start()
 {
-
+	timer->start(1000);
 }
 
 void DataBase::pause()
 {
-
+	timer->stop();
 }
 
 void DataBase::stop()
 {
-
+	timer->stop();
 }
 
 void DataBase::spActivated()
 {
-
+	isSp = true;
 }
 
 void DataBase::mpActivated()
 {
-
+	isSp = false;
 }
