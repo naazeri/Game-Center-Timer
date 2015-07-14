@@ -4,11 +4,11 @@ import QtQuick.Window 2.2
 
 ApplicationWindow
 {
-    id: main_window
     title: qsTr("سامانه مدیریت کنسول های بازی")
     width: Screen.desktopAvailableWidth / 1.8
 	height: Screen.desktopAvailableHeight / 1.6
     visible: true
+	id: main_window
 
     property real thePayment: 0
     property int spentTime: 3665
