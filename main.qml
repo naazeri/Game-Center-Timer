@@ -11,7 +11,7 @@ ApplicationWindow
 	id: main_window
 
     property real thePayment: 0
-    property int spentTime: 3665
+    property int spentTime: 0
     property int countdownHour: spentTime/3600
     property int countdownMinute: (spentTime-(countdownHour*3600))/60
     property int countdownSecond: spentTime-(countdownHour*3600)-(countdownMinute*60)
@@ -34,7 +34,7 @@ ApplicationWindow
             {
                 id:text_payment
                 anchors.top:parent.top
-                anchors.topMargin:parent.height/25
+                anchors.topMargin:parent.height/50
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "هزینه فعلی : " + thePayment + " تومان"
                 font.family: font_traffic.name
@@ -46,7 +46,7 @@ ApplicationWindow
             {
                 id:item_countdown
                 anchors.top:text_payment.bottom
-                anchors.topMargin:parent.height/25
+                anchors.topMargin:parent.height/50
                 anchors.horizontalCenter: parent.horizontalCenter
                 width:text_payment.width
                 height:parent.height/3.75
@@ -151,6 +151,110 @@ ApplicationWindow
                 exclusiveGroup: ExclusiveGroup{id:myGroup; current: spRb}
                 width:item_countdown.width/25
                 height:width
+
+                MouseArea
+                {
+                    id:spRb_mouse
+                    anchors.fill:parent
+                    onClicked:
+                    {
+                        myGroup.current=spRb
+                        spRb_image.scale=0.75
+                        spRb_image.opacity=0.5
+                        spRb_image_timer.running=true
+                    }
+                }
+            }
+
+            Image
+            {
+               id:spRb_image
+               anchors.right:spRb.left
+               anchors.verticalCenter: spRb.verticalCenter
+               width:item_countdown.width/8
+               height:width/sourceSize.width*sourceSize.height
+               source:"qrc:/sp.png"
+
+               Behavior on scale
+               {
+                   SpringAnimation
+                   {
+                       spring:2
+                       damping:.2
+                       duration:250
+                   }
+               }
+
+               Behavior on opacity
+               {
+                   SpringAnimation
+                   {
+                       spring:2
+                       damping:.2
+                       duration:250
+                   }
+               }
+
+               Image
+               {
+                   id:spRb_image_highlight
+                   anchors.fill:parent
+                   z:-1
+                   source:"qrc:/sp-highlight.png"
+               }
+
+               MouseArea
+               {
+                   id:spRb_image_mouse
+                   anchors.fill:parent
+                   onClicked:
+                   {
+                       myGroup.current=spRb
+                       parent.scale=0.75
+                       parent.opacity=0.5
+                       spRb_image_timer.running=true
+                   }
+               }
+
+               Timer
+               {
+                   id:spRb_image_timer
+                   interval:250
+                   running:false
+                   repeat:false
+                   onTriggered:
+                   {
+                       spRb_image.opacity=1
+                       spRb_image.scale=1
+                       running=false
+                   }
+               }
+            }
+
+            Text
+            {
+                id:spRb_text
+                anchors.right:spRb_image.left
+                anchors.verticalCenter: spRb.verticalCenter
+                text:" تک نفره"
+                font.family: font_yekan.name
+                font.pixelSize: spRb_image.height/2
+                color:"white"
+                scale:spRb_image.scale
+                opacity: spRb_image.opacity
+
+                MouseArea
+                {
+                    id:spRb_text_mouse
+                    anchors.fill:parent
+                    onClicked:
+                    {
+                        myGroup.current=spRb
+                        spRb_image.scale=0.75
+                        spRb_image.opacity=0.5
+                        spRb_image_timer.running=true
+                    }
+                }
             }
 
             RadioButton
@@ -163,6 +267,111 @@ ApplicationWindow
                 exclusiveGroup: myGroup
                 width:item_countdown.width/25
                 height:width
+
+                MouseArea
+                {
+                    id:mpRb_mouse
+                    anchors.fill:parent
+                    onClicked:
+                    {
+                        myGroup.current=mpRb
+                        mpRb_image.scale=0.75
+                        mpRb_image.opacity=0.5
+                        mpRb_image_timer.running=true
+                    }
+                }
+            }
+
+            Image
+            {
+                id:mpRb_image
+                anchors.right:mpRb.left
+                anchors.verticalCenter: mpRb.verticalCenter
+                width:item_countdown.width/4
+                height:width/sourceSize.width*sourceSize.height
+                source:"qrc:/mp.png"
+
+
+                Behavior on scale
+                {
+                    SpringAnimation
+                    {
+                        spring:2
+                        damping:.2
+                        duration:250
+                    }
+                }
+
+                Behavior on opacity
+                {
+                    SpringAnimation
+                    {
+                        spring:2
+                        damping:.2
+                        duration:250
+                    }
+                }
+
+                Image
+                {
+                    id:mpRb_image_highlight
+                    anchors.fill:parent
+                    source:"qrc:/mp-highlight.png"
+                    z:-1
+                }
+
+               MouseArea
+               {
+                   id:mpRb_image_mouse
+                   anchors.fill:parent
+                   onClicked:
+                   {
+                       myGroup.current=mpRb
+                       parent.scale=0.75
+                       parent.opacity=0.5
+                       mpRb_image_timer.running=true
+                   }
+               }
+
+               Timer
+               {
+                   id:mpRb_image_timer
+                   interval:250
+                   running:false
+                   repeat:false
+                   onTriggered:
+                   {
+                       mpRb_image.opacity=1
+                       mpRb_image.scale=1
+                       running=false
+                   }
+               }
+            }
+
+            Text
+            {
+                id:mpRb_text
+                anchors.right:mpRb_image.left
+                anchors.verticalCenter: mpRb.verticalCenter
+                text:"دو نفره"
+                font.family: font_yekan.name
+                font.pixelSize: mpRb_image.height/2
+                color:"white"
+                opacity:mpRb_image.opacity
+                scale:mpRb_image.scale
+
+                MouseArea
+                {
+                    id:mpRb_text_mouse
+                    anchors.fill:parent
+                    onClicked:
+                    {
+                        myGroup.current=mpRb
+                        mpRb_image.scale=0.75
+                        mpRb_image.opacity=0.5
+                        mpRb_image_timer.running=true
+                    }
+                }
             }
         }
     }

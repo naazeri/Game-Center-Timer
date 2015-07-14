@@ -14,6 +14,7 @@ class DataBase : public QObject
 public:
     explicit DataBase(QObject *parent = 0);
     ~DataBase();
+
 	void initData();
 	int payment();
 	QString duration();
