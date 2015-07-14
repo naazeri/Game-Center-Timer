@@ -7,5 +7,7 @@
         <file>mp.png</file>
         <file>sp.png</file>
         <file>bg.jpg</file>
+        <file>mp-highlight.png</file>
+        <file>sp-highlight.png</file>
     </qresource>
 </RCC>
