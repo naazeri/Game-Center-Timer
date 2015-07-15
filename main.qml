@@ -432,7 +432,7 @@ ApplicationWindow
                     anchors.fill:parent
                     onClicked:
                     {
-                        if(isRunning==flase && isStopped==false)
+                        if(isRunning==false && isStopped==false)
                         {
                             isRunning=false
                             isStopped=true
