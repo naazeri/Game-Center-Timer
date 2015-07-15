@@ -10,11 +10,13 @@ ApplicationWindow
     visible: true
 	id: main_window
 
-    property real thePayment: 0
-    property int spentTime: 0
+    property real thePayment: DataBase.payment
+    property int spentTime: DataBase.duration
     property int countdownHour: spentTime/3600
     property int countdownMinute: (spentTime-(countdownHour*3600))/60
     property int countdownSecond: spentTime-(countdownHour*3600)-(countdownMinute*60)
+    property bool isRunning: false
+    property bool isStopped: true
 
     MainForm
     {
@@ -36,10 +38,10 @@ ApplicationWindow
                 anchors.top:parent.top
                 anchors.topMargin:parent.height/50
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "هزینه فعلی : " + thePayment + " تومان"
+                text: "قابل پرداخت : " + thePayment + " تومان"
                 font.family: font_traffic.name
                 font.pixelSize:parent.height/7.5
-                color:"#ffffff"
+                color:"white"
             }
 
             Item
@@ -159,6 +161,7 @@ ApplicationWindow
                     onClicked:
                     {
                         myGroup.current=spRb
+                        DataBase.spActivated()
                         spRb_image.scale=0.75
                         spRb_image.opacity=0.5
                         spRb_image_timer.running=true
@@ -170,6 +173,7 @@ ApplicationWindow
             {
                id:spRb_image
                anchors.right:spRb.left
+               anchors.rightMargin:width/4
                anchors.verticalCenter: spRb.verticalCenter
                width:item_countdown.width/8
                height:width/sourceSize.width*sourceSize.height
@@ -210,6 +214,7 @@ ApplicationWindow
                    onClicked:
                    {
                        myGroup.current=spRb
+                       DataBase.spActivated()
                        parent.scale=0.75
                        parent.opacity=0.5
                        spRb_image_timer.running=true
@@ -239,7 +244,7 @@ ApplicationWindow
                 text:" تک نفره"
                 font.family: font_yekan.name
                 font.pixelSize: spRb_image.height/2
-                color:"white"
+                color:(isRunning==true)?"#cfd8dc":"white"
                 scale:spRb_image.scale
                 opacity: spRb_image.opacity
 
@@ -250,6 +255,7 @@ ApplicationWindow
                     onClicked:
                     {
                         myGroup.current=spRb
+                        DataBase.spActivated()
                         spRb_image.scale=0.75
                         spRb_image.opacity=0.5
                         spRb_image_timer.running=true
@@ -275,6 +281,7 @@ ApplicationWindow
                     onClicked:
                     {
                         myGroup.current=mpRb
+                        DataBase.mpActivated()
                         mpRb_image.scale=0.75
                         mpRb_image.opacity=0.5
                         mpRb_image_timer.running=true
@@ -327,6 +334,7 @@ ApplicationWindow
                    onClicked:
                    {
                        myGroup.current=mpRb
+                       DataBase.mpActivated()
                        parent.scale=0.75
                        parent.opacity=0.5
                        mpRb_image_timer.running=true
@@ -356,7 +364,7 @@ ApplicationWindow
                 text:"دو نفره"
                 font.family: font_yekan.name
                 font.pixelSize: mpRb_image.height/2
-                color:"white"
+                color:(isRunning==true)?"#cfd8dc":"white"
                 opacity:mpRb_image.opacity
                 scale:mpRb_image.scale
 
@@ -367,9 +375,69 @@ ApplicationWindow
                     onClicked:
                     {
                         myGroup.current=mpRb
+                        DataBase.mpActivated()
                         mpRb_image.scale=0.75
                         mpRb_image.opacity=0.5
                         mpRb_image_timer.running=true
+                    }
+                }
+            }
+
+            Rectangle
+            {
+                id:spButton
+                width:item_countdown.width/3
+                height:width/3
+                anchors.right:item_countdown.right
+                anchors.rightMargin: item_countdown.width/9
+                anchors.bottom:parent.bottom
+                anchors.bottomMargin:parent.height/12.5
+                color:((isStopped==false) && (isRunning==false))?"white":"#cfd8dc"
+
+                MouseArea
+                {
+                    id:spButton_mouse
+                    anchors.fill:parent
+                    onClicked:
+                    {
+                        if(isRunning==true)
+                        {
+                            isRunning=false
+                            isStopped=false
+                            DataBase.pause()
+                        }
+                        else
+                        {
+                            isRunning=true
+                            DataBase.start()
+                        }
+                    }
+                }
+            }
+
+            Rectangle
+            {
+                id:stopButton
+                width:item_countdown.width/3
+                height:width/3
+                anchors.left:item_countdown.left
+                anchors.leftMargin: item_countdown.width/9
+                anchors.bottom:parent.bottom
+                anchors.bottomMargin:parent.height/12.5
+                color:"white"
+
+                MouseArea
+                {
+                    id:stopButton_mouse
+                    anchors.fill:parent
+                    onClicked:
+                    {
+                        if(isRunning==flase && isStopped==false)
+                        {
+                            isRunning=false
+                            isStopped=true
+                            DataBase.stop()
+                        }
                     }
                 }
             }

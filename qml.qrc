@@ -9,5 +9,7 @@
         <file>bg.jpg</file>
         <file>mp-highlight.png</file>
         <file>sp-highlight.png</file>
+        <file>pause.png</file>
+        <file>play.png</file>
     </qresource>
 </RCC>
