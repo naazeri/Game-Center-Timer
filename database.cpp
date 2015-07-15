@@ -1,4 +1,5 @@
 #include "database.h"
+#include <QDebug>
 
 DataBase::DataBase(QObject *parent) : QObject(parent)
 {
@@ -67,6 +68,7 @@ void DataBase::stop()
 {
 	timer->stop();
 	isStop = true;
+	qDebug() << "called";
 
 }
 

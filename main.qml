@@ -432,12 +432,12 @@ ApplicationWindow
                     anchors.fill:parent
                     onClicked:
                     {
-                        if(isRunning==false && isStopped==false)
-                        {
+//						if(isRunning==false)
+//						{
                             isRunning=false
                             isStopped=true
                             DataBase.stop()
-                        }
+//						}
                     }
                 }
             }
