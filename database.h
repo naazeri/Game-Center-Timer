@@ -1,15 +1,13 @@
-#ifndef DATABASE_H
-#define DATABASE_H
+#pragma once
 
 #include <QObject>
 #include <QTimer>
-#include <QTime>
 
 class DataBase : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int payment READ payment WRITE setPayment NOTIFY paymentChanged)
-	Q_PROPERTY(QString duration READ duration WRITE setDuration NOTIFY durationChanged)
+	Q_PROPERTY(int duration READ duration WRITE setDuration NOTIFY durationChanged)
 
 public:
     explicit DataBase(QObject *parent = 0);
@@ -17,16 +15,15 @@ public:
 
 	void initData();
 	int payment();
-	QString duration();
+	int duration();
 	void setPayment(int payment);
-	void setDuration(QString duration);
+	void setDuration(int duration);
 
 private:
-	bool isSp, isStart, isStop, isPause;
+	bool isSp, isStop;
     int thePayment;
-    qint64 spentTime;
+	int spentTime;
     float spPerSec, mpPerSec;
-    QTime *time;
 	QTimer *timer;
 
 signals:
@@ -42,5 +39,3 @@ public slots:
 	void calculate();
 
 };
-
-#endif // DATABASE_H

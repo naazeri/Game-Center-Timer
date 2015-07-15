@@ -13,10 +13,9 @@ DataBase::~DataBase()
 void DataBase::initData()
 {
     timer = new QTimer(this);
-    time = new QTime();
-    time->setHMS(0,0,0,0);
 
     isSp = true;
+	isStop = false;
     thePayment = 0;
     spentTime = 0;
     spPerSec = 0.6;
@@ -30,31 +29,33 @@ int DataBase::payment()
 	return thePayment;
 }
 
-void DataBase::calculate()
-{
-
-}
-
 void DataBase::setPayment(int payment)
 {
 	thePayment = payment;
 	emit paymentChanged();
 }
 
-QString DataBase::duration()
+int DataBase::duration()
 {
-	return time->toString("hh:mm:ss");
+	return spentTime;
 }
 
-void DataBase::setDuration(QString duration)
+void DataBase::setDuration(int duration)
 {
-	time->setHMS(0,0,0,0);
+	spentTime = duration;
 	emit durationChanged();
 }
 
 void DataBase::start()
 {
+	if (isStop) {
+
+		spentTime = 0;
+		isStop = false;
+	}
+
 	timer->start(1000);
+
 }
 
 void DataBase::pause()
@@ -65,6 +66,8 @@ void DataBase::pause()
 void DataBase::stop()
 {
 	timer->stop();
+	isStop = true;
+
 }
 
 void DataBase::spActivated()
@@ -75,4 +78,9 @@ void DataBase::spActivated()
 void DataBase::mpActivated()
 {
 	isSp = false;
+}
+
+void DataBase::calculate()
+{
+	setDuration(spentTime + 1);
 }
