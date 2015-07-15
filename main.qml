@@ -392,7 +392,17 @@ ApplicationWindow
                 anchors.rightMargin: item_countdown.width/9
                 anchors.bottom:parent.bottom
                 anchors.bottomMargin:parent.height/12.5
-                color:((isStopped==false) && (isRunning==false))?"white":"#cfd8dc"
+                color:(isRunning==false)?"#4caf50":"#ffc107"
+
+                Text
+                {
+                    id:spText
+                    anchors.centerIn: parent
+                    font.pixelSize: parent.height/1.5
+                    font.family: font_yekan.name
+                    text:(isRunning==true)?"ایست":"شروع"
+                    color:"white"
+                }
 
                 MouseArea
                 {
@@ -424,7 +434,17 @@ ApplicationWindow
                 anchors.leftMargin: item_countdown.width/9
                 anchors.bottom:parent.bottom
                 anchors.bottomMargin:parent.height/12.5
-                color:"white"
+                color:"#f44336"
+
+                Text
+                {
+                    id:stopText
+                    anchors.centerIn: parent
+                    font.pixelSize: parent.height/1.5
+                    font.family: font_yekan.name
+                    text:"توقف"
+                    color:(isRunning==false)?"#9e9e9e":"white"
+                }
 
                 MouseArea
                 {
