@@ -15,4 +15,5 @@ include(deployment.pri)
 
 HEADERS += \
     database.h
+
 RC_ICONS = game_icon.ico

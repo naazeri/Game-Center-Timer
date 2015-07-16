@@ -19,8 +19,8 @@ void DataBase::initData()
 	isStop = false;
     thePayment = 0;
     spentTime = 0;
-    spPerSec = 0.6;
-    mpPerSec = 0.8;
+	spPerSec = 1;
+	mpPerSec = 2;
 
 	connect(timer, SIGNAL(timeout()), this, SLOT(calculate()));
 }
@@ -33,6 +33,7 @@ int DataBase::payment()
 void DataBase::setPayment(int payment)
 {
 	thePayment = payment;
+//	qDebug() << thePayment;
 	emit paymentChanged();
 }
 
@@ -68,8 +69,6 @@ void DataBase::stop()
 {
 	timer->stop();
 	isStop = true;
-	qDebug() << "called";
-
 }
 
 void DataBase::spActivated()
@@ -84,5 +83,17 @@ void DataBase::mpActivated()
 
 void DataBase::calculate()
 {
-	setDuration(spentTime + 1);
+	setDuration(++spentTime);
+
+	if (isSp) {
+
+		setPayment(spentTime * spPerSec);
+
+	}
+
+	else {
+
+		setPayment(spentTime * mpPerSec);
+
+	}
 }

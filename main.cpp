@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
     QQmlContext *root = engine.rootContext();
     DataBase *dataBase = new DataBase;
 
